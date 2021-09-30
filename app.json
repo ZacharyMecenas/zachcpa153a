@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "creative153a",
+    "slug": "creative153a",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "creative153a"
+}
