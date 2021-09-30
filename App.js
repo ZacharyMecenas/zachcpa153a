@@ -1,7 +1,33 @@
 import * as React from 'react';
-import { Button, View, Text, StyleSheet, Alert } from 'react-native';
+import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+function PhotoID  ({name,imageurl})  {
+  const [image,setImage] = React.useState(imageurl)
+  const [editing,setEditing] = React.useState(true)
+
+  let editView =
+    <TextInput
+        style={{ fontSize: 14, color: 'yellow'}}
+        placeholder="Image url..."
+        onChangeText={text => {setImage(text)}}
+    />
+
+  return (
+    <View style= {{flexDirection:'column', flex: 1}}>
+
+        <View style= {{flex: 4,}}>
+            <Image source={{uri:image}}
+                 style={{width:'100%',height:'100%'}}/>
+        </View>
+         <View style= {{flex: 1, alignItems: 'center', justifyContent: 'flex-start', }}>
+           <Text style={{fontSize:48}}>{name}</Text>
+           {editing?editView:""}
+           <Button title="edit" onPress={()=> setEditing(!editing)} />
+      </View>
+    </View>
+  )}
 
 function HomeScreen({ navigation }) {
   return (
@@ -16,8 +42,10 @@ function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate('Settings')}
         />
       </View>
-      <View style={styles.screenContainer}>
-
+      <View style={{flex:16, flexDirection: 'column', backgroundColor: 'black', justifyContent: 'flex-end'}}>
+        
+        <PhotoID style={{flex: 10, width: 3000}} name="" 
+        imageurl="https://media.istockphoto.com/photos/nicelooking-attractive-gorgeous-glamorous-elegant-stylish-cheerful-picture-id1165055006?k=20&m=1165055006&s=612x612&w=0&h=OD4-_BceL_R2eaaBzDQrXNIyydwYXOJX-m-0z12z17s="/>
       </View>
     </View>
   );
