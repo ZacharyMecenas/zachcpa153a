@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
@@ -32,15 +33,21 @@ function PhotoID  ({name,imageurl})  {
 function HomeScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
-      <View style={styles.header}>
-        <Button
-          title="About"
-          onPress={() => navigation.navigate('About')}
-        />
-        <Button
-          title="Settings"
-          onPress={() => navigation.navigate('Settings')}
-        />
+      <View style = {{flex:1, backgroundColor:'darkblue', justifyContent : 'center', alignItems : 'center'}}>
+        <View style={styles.header}>
+          <Button
+            title="About"
+            onPress={() => navigation.navigate('About')}
+          />
+          <Button
+            title="Settings"
+            onPress={() => navigation.navigate('Settings')}
+          />
+          <Button
+            title="Profile"
+            onPress={() => navigation.navigate('Profile')}
+          />
+        </View>
       </View>
       <View style={{flex:16, flexDirection: 'column', backgroundColor: 'black', justifyContent: 'flex-end'}}>
         
@@ -67,6 +74,14 @@ function AboutScreen() {
           that are not yet functional.
         </Text>
       </View>
+    </View>
+  );
+}
+
+function ProfileScreen() {
+  return (
+    <View>
+
     </View>
   );
 }
@@ -105,6 +120,7 @@ function App() {
         <Stack.Screen name="Main" component={HomeScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -116,9 +132,10 @@ const styles = StyleSheet.create({
   header : {
     flex: 1,
     alignContent: 'flexEnd',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     flexDirection: 'row',
-    backgroundColor: 'darkblue'
+    backgroundColor: 'darkblue',
+    width: '25%'
   },
   headerText : {
     fontSize: 40,
@@ -134,6 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    height : '10%'
   },
   featureText: {
     fontSize: 20,
