@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Profile from './components/Profile';
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
@@ -61,8 +61,10 @@ function HomeScreen({ navigation }) {
 function AboutScreen() {
   return (
     <View style={{flex: 1}}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>About</Text>
+      <View style = {{flex:1, backgroundColor:'darkblue', justifyContent : 'center', alignItems : 'center'}}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>About</Text>
+        </View>
       </View>
       <View style={styles.screenContainer}>
         <Text style={styles.paragraph}>
@@ -86,100 +88,7 @@ function ProfileScreen() {
   );
 }
 
-function Profile() {
-  const [info, setInfo] = useState({name:'',email:''});
-  const [name, setName] = useState('');
-  const [email,setEmail] = useState('')
 
-
-  useEffect(() => {getData()}
-           ,[])
-
-  const getData = async () => {
-        try {
-          const jsonValue = await AsyncStorage.getItem('@profile_info')
-          let data = null
-          if (jsonValue!=null) {
-            data = JSON.parse(jsonValue)
-            setInfo(data)
-            setName(data.name)
-            setEmail(data.email)
-          } else {
-            setInfo({})
-            setName("")
-            setEmail("")
-          }
-
-
-        } catch(e) {
-        }
-  }
-
-  const storeData = async (value) => {
-        try {
-          const jsonValue = JSON.stringify(value)
-          await AsyncStorage.setItem('@profile_info', jsonValue)
-        } catch (e) {
-        }
-  }
-
-  const clearAll = async () => {
-        try {
-          await AsyncStorage.clear()
-        } catch(e) {
-        }
-  }
-
-
-
-
-      return (
-            <View style={{alignItems:'center', flex:16, backgroundColor:'black', justifyContent:'center'}}>
-              <TextInput
-                    style={styles.textinput}
-                    placeholder="name"
-                    placeholderTextColor="lightblue"
-                    onChangeText={text => {
-                      setName(text)
-                    }}
-                    value={name}
-                />
-              <TextInput
-                    style={styles.textinput}
-                    placeholder="email"
-                    placeholderTextColor="lightblue"
-                    onChangeText={text => {setEmail(text)}}
-                    value={email}
-                />
-              <View style={{flexDirection:'row', backgroundColor:'black'}}>
-                <Button
-                    color='blue' title='Save Profile to Memory'
-                    onPress = {() => {
-                         const theInfo = {name:name,email:email}
-                         setInfo(theInfo)
-                         storeData(theInfo)
-                       }}
-                />
-                <Button
-                    color='darkblue' title='Load Profile from Memory'
-                    onPress = {() => {
-                          getData()
-                        }}
-                />
-                <Button
-                    color='darkred' title='Clear memory'
-                    onPress = {() => {
-                          clearAll()
-                        }}
-                />
-              </View>
-              <Text style={styles.paragraph}>
-               name={name} email={email} info={JSON.stringify(info)}
-              </Text>
-
-            </View>
-      );
-    }
 
 function SettingFeature({name}) {
   return (
