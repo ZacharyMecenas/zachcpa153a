@@ -83,7 +83,7 @@ function AboutScreen() {
 function ProfileScreen() {
   return (
     <View style={styles.screenContainer}>
-      <Profile/>
+      <Profile layout="row"/>
     </View>
   );
 }
@@ -135,11 +135,11 @@ export default App;
 const styles = StyleSheet.create({
   header : {
     flex: 1,
-    alignContent: 'flexEnd',
+    alignContent: 'flex-end',
     justifyContent: 'space-around',
     flexDirection: 'row',
     backgroundColor: 'darkblue',
-    width: '25%'
+    width: '100%'
   },
   headerText : {
     fontSize: 40,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 15,
     color: 'white',
-    width: 1000,
+    width: '90%',
   },
   textinput: {
     color: 'lightblue'

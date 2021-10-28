@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Profile = () => {
+const Profile = (props) => {
     const [info, setInfo] = useState({name:'',email:'', userType:''});
     const [name, setName] = useState('');
     const [email,setEmail] = useState('')
@@ -75,7 +75,7 @@ const Profile = () => {
                       onChangeText={text => {setUserType(text)}}
                       value={userType}
                   />
-                <View style={{flexDirection:'row', backgroundColor:'black', }}>
+                <View style={{flexDirection:props.layout, backgroundColor:'black', }}>
                   <Button
                       color='blue' title='STORE'
                       onPress = {() => {
