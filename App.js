@@ -3,6 +3,7 @@ import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-n
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Profile from './components/Profile';
+import SettingsScreen from './components/Settings'
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
@@ -90,30 +91,7 @@ function ProfileScreen() {
 
 
 
-function SettingFeature({name}) {
-  return (
-    <View style={styles.settingFeature}>
-      <Text style={styles.featureText}>
-        {name}
-      </Text>
-      <Button title="Toggle On/Off"
-              onPress={() => Alert.alert("Feature coming soon...")}
-      />
-    </View>
-  );
-}
 
-function SettingsScreen() {
-  return (
-    <View style={styles.screenContainer}>
-      <SettingFeature name="Dark Mode" />
-      <SettingFeature name="Notifications" />
-      <SettingFeature name="Other feature..." />
-      <SettingFeature name="Other feature..." />
-      <SettingFeature name="Other feature..." />
-    </View>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 
