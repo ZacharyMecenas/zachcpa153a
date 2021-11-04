@@ -3,7 +3,8 @@ import { Button, View, Text, StyleSheet, Alert, TextInput, Image } from 'react-n
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Profile from './components/Profile';
-import SettingsScreen from './components/Settings'
+import SettingsScreen from './components/Settings';
+import AboutScreen from './components/About'
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
@@ -59,27 +60,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function AboutScreen() {
-  return (
-    <View style={{flex: 1}}>
-      <View style = {{flex:1, backgroundColor:'darkblue', justifyContent : 'center', alignItems : 'center'}}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>About</Text>
-        </View>
-      </View>
-      <View style={styles.screenContainer}>
-        <Text style={styles.paragraph}>
-          In it's current iteration, the purpose of this app is to help catalogue/organize information 
-          for events to help hosts manage their gatherings. Future features I am considering implementing 
-          would be a mechanism for sending notifications to guests, possibly by email. Also, a way for guests to rsvp
-          to events and a list viewed by hosts that lists those replies. I also would like the app to display event details
-          like location, time, and decorum to invited guests. Lastly, I have also included tentative features in the Settings page
-          that are not yet functional.
-        </Text>
-      </View>
-    </View>
-  );
-}
+
 
 function ProfileScreen() {
   return (
