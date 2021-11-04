@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Profile from './components/Profile';
 import SettingsScreen from './components/Settings';
-import AboutScreen from './components/About'
+import AboutScreen from './components/About';
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
