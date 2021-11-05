@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Profile from './components/Profile';
 import SettingsScreen from './components/Settings';
 import AboutScreen from './components/About';
+import Creator from './components/EventCreator';
 
 function PhotoID  ({name,imageurl})  {
   const [image,setImage] = React.useState(imageurl)
@@ -49,6 +50,10 @@ function HomeScreen({ navigation }) {
             title="Profile"
             onPress={() => navigation.navigate('Profile')}
           />
+          <Button
+            title="Event Info"
+            onPress={() => navigation.navigate('Event Info')}
+          />
         </View>
       </View>
       <View style={{flex:16, flexDirection: 'column', backgroundColor: 'black', justifyContent: 'flex-end'}}>
@@ -84,6 +89,7 @@ function App() {
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Event Info" component={Creator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

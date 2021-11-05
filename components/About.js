@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
       width: '100%'
     },
     headerText : {
-      fontSize: 40,
+      fontSize: 35,
       color: 'white',
     },
     screenContainer : {
