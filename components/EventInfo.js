@@ -22,7 +22,7 @@ const EventInfo = () => {
                     Time: {time} {'\n'}
                     Location: {location} {'\n'}
                 </Text>
-                <GuestList />
+                <GuestList/>
             </View>
         </View>
     )
